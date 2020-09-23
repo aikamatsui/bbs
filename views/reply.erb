@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>返信ページ</title>
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="card col-lg-6 mx-auto mt-5">
+<div class="card-body">
+  <form action="/reply/done/<%= @content.id %>" method="post">
+  <p>名前：<input type="text" name="user_name" value=" " class="form-control"></p>
+  <p>返信：<input type="text" name="body" value=" " class="form-control"></p>
+  <p><input type="submit" value="返信完了" class="btn btn-dark float-right"></p>
+  </form>
+  </div>
+  </div>
+</body>
+</html>

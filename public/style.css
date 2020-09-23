@@ -1,0 +1,67 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(45, 89, 119);
+}
+
+.card col-lg-6 mx-auto mt-5 {
+  background-color: rgb(45, 89, 119);
+}
+
+.top h1 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-family: 'Sawarabi Gothic', sans-serif;
+  text-align: center;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 50px;
+  margin-bottom: 10vh;
+}
+
+.buttom {
+  color: #fff;
+  background-color: rgb(45, 89, 119);
+}
+
+.new {
+  width: 50vw;
+  height: 30vh;
+  margin: auto;
+  padding: 10px;
+  background: #fff;
+  border: 3px #000;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.card-body {
+  margin: auto;
+  padding: 10px;
+  margin-top: 80px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.form {
+  text-align: center;
+}
+
+.card {
+  border-radius: 6px;
+}
+
+.reply {
+  margin: auto;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #fff;
+}
+
+.card-body-2 {
+  padding-bottom: 50px;
+  border-bottom: 1px solid black;
+}
+
+.img-fluid {
+  width: 100%;
+}

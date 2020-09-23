@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>クラス掲示板</title>
+  <%# <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css"> %>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="top">
+    <h1>クラス掲示板</h1>
+  </div>
+  <div class="container">
+    <div class="new">
+      <div class="float-right card col-lg-6 m-5">
+        <form action="/new" method="post" enctype="multipart/form-data">
+          <p>名前：<input type="text" name="user_name" class="form-control" /></p>
+          <p>本文：<input type="text" name="body" class="form-control" /></p>
+          <p><input type="file" name="file" class="form-control-file" /></p>
+          <input type="submit" value="POST" class="btn btn-dark float-right" />
+          <select name="category" id="category">
+            <% @categories.each do |category| %>
+            <option value="<%= category.id %>"><%= category.name %></option>
+            <% end %>
+          </select>
+        </form>
+      </div>
+      <div>
+      </div>
+      <div>
+        <% @categories.each do |category| %>
+        <a href="/category/<%= category.id %>"><%= category.name %></a>
+        <% end %>
+      </div>
+
+      <% if @category_name.present? %>
+      <h2><%= @category_name %></h2>
+      <% end %>
+      <% @contents.each do |content| %>
+      <div class="card">
+        <div class="card-body">
+          <p><%= content.name %></p>
+          <p><%= content.body %></p>
+          <div class="card-body-2">
+            <% unless content.img.empty? %>
+            <p><img class="img-fluid rounded" src="<%= content.img %>"></p>
+            <% end %>
+            <span class="card-footer-text"><%= content.good %></span>
+            <form action="/good/<%= content.id %>" method="post">
+              <input type="submit" value="LIKE" class="btn card-footer-text">
+            </form>
+            <form action="/delete/<%= content.id %>" method="post">
+              <input type="submit" value="DELETE" class="btn card-footer-text">
+            </form>
+            <form action="/edit/<%= content.id %>" method="get">
+              <input type="submit" value="EDIT" class="btn card-footer-text">
+            </form>
+            <form action="/reply/<%= content.id %>" method="post">
+              <input type="submit" value="REPLY" class="btn card-footer-text">
+            </form>
+          </div>
+          <div class="card float-right col-lg-6 mb-2 mx-5">
+            <% replies = Reply.where(contribution_id: content.id) %>
+            <% replies.each do |reply| %>
+            <div class="reply">
+              <p><%= reply.name %></p>
+              <p><%= reply.body %></p>
+            </div>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</body>
+</html>

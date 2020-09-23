@@ -21,10 +21,11 @@ get '/' do
 end
 
 get '/category/:id' do
-  @contribution  = Contribution.find_by(category_id:params[:id])
-  @categories    = Category.find(params[:id])
-  @category_name = @category.name
-  erb:index
+  @contents   = Contribution.where(category_id:params[:id])
+  @category       = Category.find(params[:id])
+  @category_name  = @category.name
+  @categories     = Category.all
+  erb :index
 end
 
 post '/new' do
@@ -40,7 +41,8 @@ post '/new' do
     name: params[:user_name],
     body: params[:body],
     good: 0,
-    img: img_url
+    img: img_url,
+    category_id: params[:category]
   })
 
   redirect '/'
